@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include "lib.h"
 
 //-----------------------------------------------------------------------------
 //  DEFINE
@@ -12,8 +13,8 @@
 
 struct piece
 {
-    bool white;
-    char type;
+    char couleur;       //  b:noir / w:blanc / n:neutre
+    char type;          //  B:fou / R:tour / N:cavalier / K:roi / Q:reine / V:vide
 };
 
 struct co_case
@@ -32,8 +33,10 @@ struct coup
 //-----------------------------------------------------------------------------
 // MAIN
 
-int main(int argc, char const *argv[])
+int main(void)
 {
-    /* code */
+    struct piece **plateau = alloc_plateau();
+    printf("zizi %c \n",plateau[0][0].type);
+    print_plateau(plateau);
     return 0;
 }
