@@ -13,8 +13,8 @@
 
 struct piece
 {
-    char couleur;       //  b:noir / w:blanc / n:neutre
-    char type;          //  B:fou / R:tour / N:cavalier / K:roi / Q:reine / V:vide
+    bool white;       //  b:noir / w:blanc / n:neutre
+    char type;        //  B:fou / R:tour / N:cavalier / K:roi / Q:reine / P:pion / V:vide
 };
 
 struct co_case
@@ -36,6 +36,7 @@ struct coup
 int main(void)
 {
     struct piece **plateau = alloc_plateau();
+    placement_init(plateau);
     print_plateau(plateau);
     free_plateau(plateau);
 

@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <stdbool.h>
 #include "lib.h"
 
 
@@ -51,9 +52,11 @@ void print_plateau(struct piece** plateau)
             if (plateau[i][k].type == 'V')
             {
                 printf("|   ");
-            } else {
+            } else if (plateau[i][k].couleur == true) {
                 printf("| %c ",plateau[i][k].type);
-            }            
+            } else {
+                printf("| %c ",plateau[i][k].type + 'a' - 'A');
+            }
         }
         printf("|\n---------------------------------\n");
     }
@@ -67,4 +70,51 @@ void free_plateau(struct piece** plateau)
         free(plateau[i]);
     }
     free(plateau);
+}
+
+void placement_init(struct piece** plateau)
+{
+    plateau[0][0].couleur = true;
+    plateau[0][0].type = 'R';
+    plateau[0][1].couleur = true;
+    plateau[0][1].type = 'N';
+    plateau[0][2].couleur = true;
+    plateau[0][2].type = 'B';
+    plateau[0][3].couleur = true;
+    plateau[0][3].type = 'Q';
+    plateau[0][4].couleur = true;
+    plateau[0][4].type = 'K';
+    plateau[0][5].couleur = true;
+    plateau[0][5].type = 'B';
+    plateau[0][6].couleur = true;
+    plateau[0][6].type = 'N';
+    plateau[0][7].couleur = true;
+    plateau[0][7].type = 'R';
+    
+    plateau[7][0].couleur = false;
+    plateau[7][0].type = 'R';
+    plateau[7][1].couleur = false;
+    plateau[7][1].type = 'N';
+    plateau[7][2].couleur = false;
+    plateau[7][2].type = 'B';
+    plateau[7][3].couleur = false;
+    plateau[7][3].type = 'Q';
+    plateau[7][4].couleur = false;
+    plateau[7][4].type = 'K';
+    plateau[7][5].couleur = false;
+    plateau[7][5].type = 'B';
+    plateau[7][6].couleur = false;
+    plateau[7][6].type = 'N';
+    plateau[7][7].couleur = false;
+    plateau[7][7].type = 'R';
+
+    for (int  i = 0; i < TABLEAU_TAILLE; i++)
+    {
+        plateau[1][i].couleur = true;
+        plateau[1][i].type = 'P';
+
+        plateau[6][i].couleur = false;
+        plateau[6][i].type = 'P';
+    }
+    
 }
