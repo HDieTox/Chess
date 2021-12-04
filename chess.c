@@ -36,7 +36,8 @@ struct coup
 int main(void)
 {
     struct piece **plateau = alloc_plateau();
-    printf("zizi %c \n",plateau[0][0].type);
     print_plateau(plateau);
+    free_plateau(plateau);
+
     return 0;
 }

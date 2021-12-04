@@ -20,14 +20,16 @@ struct piece
 struct piece **alloc_plateau()
 {
     struct piece **matrice = malloc(8 * sizeof(struct piece *));
-    if (matrice == NULL) {return NULL;printf("bug alloc 1");}
+    if (matrice == NULL) {return NULL;}
 
     for (int i = 0; i < 8; i++)
     {
         matrice[i] = malloc(8 * sizeof(struct piece));
-        if (matrice[i] == NULL) {return NULL;printf("bug alloc 2");}
+        if (matrice[i] == NULL) {return NULL;}
     }
 
+
+//REMPLISSAGE PAR VIDE
     for (int i = 0; i < 8; i++)
     {
         
@@ -39,16 +41,30 @@ struct piece **alloc_plateau()
     return matrice;
 }
 
-void print_plateau(struct piece **plateau)
+void print_plateau(struct piece** plateau)
 {
     printf("---------------------------------\n");
     for(int i = 0; i < TABLEAU_TAILLE; i++)
     {
         for(int k = 0; k < TABLEAU_TAILLE; k++)
         {
-            printf("| %c ",plateau[i][k].type);
+            if (plateau[i][k].type == 'V')
+            {
+                printf("|   ");
+            } else {
+                printf("| %c ",plateau[i][k].type);
+            }            
         }
         printf("|\n---------------------------------\n");
     }
     printf("\n");
+}
+
+void free_plateau(struct piece** plateau)
+{
+    for (int i = 0; i < TABLEAU_TAILLE; i++)
+    {
+        free(plateau[i]);
+    }
+    free(plateau);
 }

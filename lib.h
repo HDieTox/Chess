@@ -7,5 +7,6 @@ struct coup;
 
 struct piece **alloc_plateau();
 void print_plateau(struct piece **plateau);
+void free_plateau(struct piece** plateau);
 
 #endif
